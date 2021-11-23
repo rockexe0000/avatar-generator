@@ -259,9 +259,17 @@ docker build --rm -t avatar-rest-api .
 
 docker container run -d -p 8080:8080 avatar-rest-api
 
-http://localhost:8080/avatar/get
-
-
+http://localhost:8080/avatar/cat?id=aaa
+http://localhost:8080/avatar/eightbit/male?id=aaa
+http://localhost:8080/avatar/eightbit/female?id=aaa
+http://localhost:8080/avatar/github?id=aaa
+http://localhost:8080/avatar/identicon?id=aaa
+http://localhost:8080/avatar/smiley/accessories?id=aaa
+http://localhost:8080/avatar/smiley/eyemouth?id=aaa
+http://localhost:8080/avatar/smiley/ghost?id=aaa
+http://localhost:8080/avatar/smiley/default?id=aaa
+http://localhost:8080/avatar/square?id=aaa
+http://localhost:8080/avatar/triangle?id=aaa
 
 
 ```
