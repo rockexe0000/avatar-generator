@@ -18,6 +18,7 @@ import com.talanlabs.avatargenerator.avatar.service.AvatarShowing;
 import com.talanlabs.avatargenerator.cat.CatAvatar;
 import com.talanlabs.avatargenerator.eightbit.EightBitAvatar;
 import com.talanlabs.avatargenerator.smiley.SmileyAvatar;
+import io.swagger.annotations.ApiParam;
 
 @RestController
 @RequestMapping("avatar")
@@ -35,43 +36,66 @@ public class AvatarController {
 
 
   @GetMapping(value = "/cat", produces = MediaType.IMAGE_PNG_VALUE)
-  public BufferedImage getCatAvatar(@RequestParam(name = "id", required = false) String id,
-      @RequestParam(name = "w", required = false) Integer w,
-      @RequestParam(name = "h", required = false) Integer h,
-      @RequestParam(name = "width", required = false) Integer width,
-      @RequestParam(name = "height", required = false) Integer height) {
+  public BufferedImage getCatAvatar(
+      @ApiParam(value = "序號", required = false) @RequestParam(name = "id",
+          required = false) String id,
+      @ApiParam(value = "產生行數", required = false) @RequestParam(name = "w",
+          required = false) Integer w,
+      @ApiParam(value = "產生列數", required = false) @RequestParam(name = "h",
+          required = false) Integer h,
+      @ApiParam(value = "圖片寬度", required = false) @RequestParam(name = "width",
+          required = false) Integer width,
+      @ApiParam(value = "圖片高度", required = false) @RequestParam(name = "height",
+          required = false) Integer height) {
 
     return getAvatar(CatAvatar.newAvatarBuilder(), id, w, h, width, height);
   }
 
   @GetMapping(value = "/eightbit/male", produces = MediaType.IMAGE_PNG_VALUE)
-  public BufferedImage getEightBitMaleAvatar(@RequestParam(name = "id", required = false) String id,
-      @RequestParam(name = "w", required = false) Integer w,
-      @RequestParam(name = "h", required = false) Integer h,
-      @RequestParam(name = "width", required = false) Integer width,
-      @RequestParam(name = "height", required = false) Integer height) {
+  public BufferedImage getEightBitMaleAvatar(
+      @ApiParam(value = "序號", required = false) @RequestParam(name = "id",
+          required = false) String id,
+      @ApiParam(value = "產生行數", required = false) @RequestParam(name = "w",
+          required = false) Integer w,
+      @ApiParam(value = "產生列數", required = false) @RequestParam(name = "h",
+          required = false) Integer h,
+      @ApiParam(value = "圖片寬度", required = false) @RequestParam(name = "width",
+          required = false) Integer width,
+      @ApiParam(value = "圖片高度", required = false) @RequestParam(name = "height",
+          required = false) Integer height) {
 
     return getAvatar(EightBitAvatar.newMaleAvatarBuilder(), id, w, h, width, height);
   }
 
   @GetMapping(value = "/eightbit/female", produces = MediaType.IMAGE_PNG_VALUE)
   public BufferedImage getEightBitFemaleAvatar(
-      @RequestParam(name = "id", required = false) String id,
-      @RequestParam(name = "w", required = false) Integer w,
-      @RequestParam(name = "h", required = false) Integer h,
-      @RequestParam(name = "width", required = false) Integer width,
-      @RequestParam(name = "height", required = false) Integer height) {
+      @ApiParam(value = "序號", required = false) @RequestParam(name = "id",
+          required = false) String id,
+      @ApiParam(value = "產生行數", required = false) @RequestParam(name = "w",
+          required = false) Integer w,
+      @ApiParam(value = "產生列數", required = false) @RequestParam(name = "h",
+          required = false) Integer h,
+      @ApiParam(value = "圖片寬度", required = false) @RequestParam(name = "width",
+          required = false) Integer width,
+      @ApiParam(value = "圖片高度", required = false) @RequestParam(name = "height",
+          required = false) Integer height) {
 
     return getAvatar(EightBitAvatar.newFemaleAvatarBuilder(), id, w, h, width, height);
   }
 
 
   @GetMapping(value = "/github", produces = MediaType.IMAGE_PNG_VALUE)
-  public BufferedImage getGitHubAvatar(@RequestParam(name = "id", required = false) String id,
-      @RequestParam(name = "w", required = false) Integer w,
-      @RequestParam(name = "h", required = false) Integer h,
-      @RequestParam(name = "width", required = false) Integer width,
-      @RequestParam(name = "height", required = false) Integer height) {
+  public BufferedImage getGitHubAvatar(
+      @ApiParam(value = "序號", required = false) @RequestParam(name = "id",
+          required = false) String id,
+      @ApiParam(value = "產生行數", required = false) @RequestParam(name = "w",
+          required = false) Integer w,
+      @ApiParam(value = "產生列數", required = false) @RequestParam(name = "h",
+          required = false) Integer h,
+      @ApiParam(value = "圖片寬度", required = false) @RequestParam(name = "width",
+          required = false) Integer width,
+      @ApiParam(value = "圖片高度", required = false) @RequestParam(name = "height",
+          required = false) Integer height) {
 
     return getAvatar(GitHubAvatar.newAvatarBuilder(), id, w, h, width, height);
   }
@@ -79,11 +103,17 @@ public class AvatarController {
 
 
   @GetMapping(value = "/identicon", produces = MediaType.IMAGE_PNG_VALUE)
-  public BufferedImage getIdenticonAvatar(@RequestParam(name = "id", required = false) String id,
-      @RequestParam(name = "w", required = false) Integer w,
-      @RequestParam(name = "h", required = false) Integer h,
-      @RequestParam(name = "width", required = false) Integer width,
-      @RequestParam(name = "height", required = false) Integer height) {
+  public BufferedImage getIdenticonAvatar(
+      @ApiParam(value = "序號", required = false) @RequestParam(name = "id",
+          required = false) String id,
+      @ApiParam(value = "產生行數", required = false) @RequestParam(name = "w",
+          required = false) Integer w,
+      @ApiParam(value = "產生列數", required = false) @RequestParam(name = "h",
+          required = false) Integer h,
+      @ApiParam(value = "圖片寬度", required = false) @RequestParam(name = "width",
+          required = false) Integer width,
+      @ApiParam(value = "圖片高度", required = false) @RequestParam(name = "height",
+          required = false) Integer height) {
 
     return getAvatar(IdenticonAvatar.newAvatarBuilder(), id, w, h, width, height);
   }
@@ -92,43 +122,64 @@ public class AvatarController {
 
   @GetMapping(value = "/smiley/accessories", produces = MediaType.IMAGE_PNG_VALUE)
   public BufferedImage getSmileyAccessoriesAvatar(
-      @RequestParam(name = "id", required = false) String id,
-      @RequestParam(name = "w", required = false) Integer w,
-      @RequestParam(name = "h", required = false) Integer h,
-      @RequestParam(name = "width", required = false) Integer width,
-      @RequestParam(name = "height", required = false) Integer height) {
+      @ApiParam(value = "序號", required = false) @RequestParam(name = "id",
+          required = false) String id,
+      @ApiParam(value = "產生行數", required = false) @RequestParam(name = "w",
+          required = false) Integer w,
+      @ApiParam(value = "產生列數", required = false) @RequestParam(name = "h",
+          required = false) Integer h,
+      @ApiParam(value = "圖片寬度", required = false) @RequestParam(name = "width",
+          required = false) Integer width,
+      @ApiParam(value = "圖片高度", required = false) @RequestParam(name = "height",
+          required = false) Integer height) {
 
     return getAvatar(SmileyAvatar.newAccessoriesAvatarBuilder(), id, w, h, width, height);
   }
 
   @GetMapping(value = "/smiley/eyemouth", produces = MediaType.IMAGE_PNG_VALUE)
   public BufferedImage getSmileyEyeMouthAvatar(
-      @RequestParam(name = "id", required = false) String id,
-      @RequestParam(name = "w", required = false) Integer w,
-      @RequestParam(name = "h", required = false) Integer h,
-      @RequestParam(name = "width", required = false) Integer width,
-      @RequestParam(name = "height", required = false) Integer height) {
+      @ApiParam(value = "序號", required = false) @RequestParam(name = "id",
+          required = false) String id,
+      @ApiParam(value = "產生行數", required = false) @RequestParam(name = "w",
+          required = false) Integer w,
+      @ApiParam(value = "產生列數", required = false) @RequestParam(name = "h",
+          required = false) Integer h,
+      @ApiParam(value = "圖片寬度", required = false) @RequestParam(name = "width",
+          required = false) Integer width,
+      @ApiParam(value = "圖片高度", required = false) @RequestParam(name = "height",
+          required = false) Integer height) {
 
     return getAvatar(SmileyAvatar.newEyeMouthAvatarBuilder(), id, w, h, width, height);
   }
 
   @GetMapping(value = "/smiley/ghost", produces = MediaType.IMAGE_PNG_VALUE)
-  public BufferedImage getSmileyGhostAvatar(@RequestParam(name = "id", required = false) String id,
-      @RequestParam(name = "w", required = false) Integer w,
-      @RequestParam(name = "h", required = false) Integer h,
-      @RequestParam(name = "width", required = false) Integer width,
-      @RequestParam(name = "height", required = false) Integer height) {
+  public BufferedImage getSmileyGhostAvatar(
+      @ApiParam(value = "序號", required = false) @RequestParam(name = "id",
+          required = false) String id,
+      @ApiParam(value = "產生行數", required = false) @RequestParam(name = "w",
+          required = false) Integer w,
+      @ApiParam(value = "產生列數", required = false) @RequestParam(name = "h",
+          required = false) Integer h,
+      @ApiParam(value = "圖片寬度", required = false) @RequestParam(name = "width",
+          required = false) Integer width,
+      @ApiParam(value = "圖片高度", required = false) @RequestParam(name = "height",
+          required = false) Integer height) {
 
     return getAvatar(SmileyAvatar.newGhostAvatarBuilder(), id, w, h, width, height);
   }
 
   @GetMapping(value = "/smiley/default", produces = MediaType.IMAGE_PNG_VALUE)
   public BufferedImage getSmileyDefaultAvatar(
-      @RequestParam(name = "id", required = false) String id,
-      @RequestParam(name = "w", required = false) Integer w,
-      @RequestParam(name = "h", required = false) Integer h,
-      @RequestParam(name = "width", required = false) Integer width,
-      @RequestParam(name = "height", required = false) Integer height) {
+      @ApiParam(value = "序號", required = false) @RequestParam(name = "id",
+          required = false) String id,
+      @ApiParam(value = "產生行數", required = false) @RequestParam(name = "w",
+          required = false) Integer w,
+      @ApiParam(value = "產生列數", required = false) @RequestParam(name = "h",
+          required = false) Integer h,
+      @ApiParam(value = "圖片寬度", required = false) @RequestParam(name = "width",
+          required = false) Integer width,
+      @ApiParam(value = "圖片高度", required = false) @RequestParam(name = "height",
+          required = false) Integer height) {
 
     return getAvatar(SmileyAvatar.newDefaultAvatarBuilder(), id, w, h, width, height);
   }
@@ -136,22 +187,33 @@ public class AvatarController {
 
 
   @GetMapping(value = "/square", produces = MediaType.IMAGE_PNG_VALUE)
-  public BufferedImage getSquareAvatar(@RequestParam(name = "id", required = false) String id,
-      @RequestParam(name = "w", required = false) Integer w,
-      @RequestParam(name = "h", required = false) Integer h,
-      @RequestParam(name = "width", required = false) Integer width,
-      @RequestParam(name = "height", required = false) Integer height) {
+  public BufferedImage getSquareAvatar(
+      @ApiParam(value = "序號", required = false) @RequestParam(name = "id",
+          required = false) String id,
+      @ApiParam(value = "產生行數", required = false) @RequestParam(name = "w",
+          required = false) Integer w,
+      @ApiParam(value = "產生列數", required = false) @RequestParam(name = "h",
+          required = false) Integer h,
+      @ApiParam(value = "圖片寬度", required = false) @RequestParam(name = "width",
+          required = false) Integer width,
+      @ApiParam(value = "圖片高度", required = false) @RequestParam(name = "height",
+          required = false) Integer height) {
 
     return getAvatar(SquareAvatar.newAvatarBuilder(), id, w, h, width, height);
   }
 
-
   @GetMapping(value = "/triangle", produces = MediaType.IMAGE_PNG_VALUE)
-  public BufferedImage getTriangleAvatar(@RequestParam(name = "id", required = false) String id,
-      @RequestParam(name = "w", required = false) Integer w,
-      @RequestParam(name = "h", required = false) Integer h,
-      @RequestParam(name = "width", required = false) Integer width,
-      @RequestParam(name = "height", required = false) Integer height) {
+  public BufferedImage getTriangleAvatar(
+      @ApiParam(value = "序號", required = false) @RequestParam(name = "id",
+          required = false) String id,
+      @ApiParam(value = "產生行數", required = false) @RequestParam(name = "w",
+          required = false) Integer w,
+      @ApiParam(value = "產生列數", required = false) @RequestParam(name = "h",
+          required = false) Integer h,
+      @ApiParam(value = "圖片寬度", required = false) @RequestParam(name = "width",
+          required = false) Integer width,
+      @ApiParam(value = "圖片高度", required = false) @RequestParam(name = "height",
+          required = false) Integer height) {
 
     return getAvatar(TriangleAvatar.newAvatarBuilder(), id, w, h, width, height);
   }

@@ -20,6 +20,7 @@
     <avatar.version>1.2.0-SNAPSHOT</avatar.version>
     <jlegorify.version>1.0.0</jlegorify.version>
     <guava.version>19.0</guava.version>
+    <springfoxVersion>3.0.0</springfoxVersion>
   </properties>
   
     <build>
@@ -83,6 +84,21 @@
       <scope>test</scope>
     </dependency>
   
+    <dependency>
+        <groupId>io.springfox</groupId>
+        <artifactId>springfox-boot-starter</artifactId>
+        <version>${springfoxVersion}</version>
+    </dependency>
+		<dependency>
+		  <groupId>io.springfox</groupId>
+		  <artifactId>springfox-swagger-ui</artifactId>
+		  <version>${springfoxVersion}</version>
+		</dependency>
+		<dependency>
+      <groupId>io.springfox</groupId>
+      <artifactId>springfox-data-rest</artifactId>
+      <version>${springfoxVersion}</version>
+    </dependency>
   
   
   
