@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import com.talanlabs.avatargenerator.Avatar;
+import com.talanlabs.avatargenerator.Avatar.AvatarBuilder;
 import com.talanlabs.avatargenerator.GitHubAvatar;
 import com.talanlabs.avatargenerator.IdenticonAvatar;
 import com.talanlabs.avatargenerator.SquareAvatar;
@@ -37,35 +37,43 @@ public class AvatarController {
   @GetMapping(value = "/cat", produces = MediaType.IMAGE_PNG_VALUE)
   public BufferedImage getCatAvatar(@RequestParam(name = "id", required = false) String id,
       @RequestParam(name = "w", required = false) Integer w,
-      @RequestParam(name = "h", required = false) Integer h) {
+      @RequestParam(name = "h", required = false) Integer h,
+      @RequestParam(name = "width", required = false) Integer width,
+      @RequestParam(name = "height", required = false) Integer height) {
 
-    return getAvatar(CatAvatar.newAvatarBuilder().build(), id, w, h);
+    return getAvatar(CatAvatar.newAvatarBuilder(), id, w, h, width, height);
   }
 
   @GetMapping(value = "/eightbit/male", produces = MediaType.IMAGE_PNG_VALUE)
   public BufferedImage getEightBitMaleAvatar(@RequestParam(name = "id", required = false) String id,
       @RequestParam(name = "w", required = false) Integer w,
-      @RequestParam(name = "h", required = false) Integer h) {
+      @RequestParam(name = "h", required = false) Integer h,
+      @RequestParam(name = "width", required = false) Integer width,
+      @RequestParam(name = "height", required = false) Integer height) {
 
-    return getAvatar(EightBitAvatar.newMaleAvatarBuilder().build(), id, w, h);
+    return getAvatar(EightBitAvatar.newMaleAvatarBuilder(), id, w, h, width, height);
   }
 
   @GetMapping(value = "/eightbit/female", produces = MediaType.IMAGE_PNG_VALUE)
   public BufferedImage getEightBitFemaleAvatar(
       @RequestParam(name = "id", required = false) String id,
       @RequestParam(name = "w", required = false) Integer w,
-      @RequestParam(name = "h", required = false) Integer h) {
+      @RequestParam(name = "h", required = false) Integer h,
+      @RequestParam(name = "width", required = false) Integer width,
+      @RequestParam(name = "height", required = false) Integer height) {
 
-    return getAvatar(EightBitAvatar.newFemaleAvatarBuilder().build(), id, w, h);
+    return getAvatar(EightBitAvatar.newFemaleAvatarBuilder(), id, w, h, width, height);
   }
 
 
   @GetMapping(value = "/github", produces = MediaType.IMAGE_PNG_VALUE)
   public BufferedImage getGitHubAvatar(@RequestParam(name = "id", required = false) String id,
       @RequestParam(name = "w", required = false) Integer w,
-      @RequestParam(name = "h", required = false) Integer h) {
+      @RequestParam(name = "h", required = false) Integer h,
+      @RequestParam(name = "width", required = false) Integer width,
+      @RequestParam(name = "height", required = false) Integer height) {
 
-    return getAvatar(GitHubAvatar.newAvatarBuilder().build(), id, w, h);
+    return getAvatar(GitHubAvatar.newAvatarBuilder(), id, w, h, width, height);
   }
 
 
@@ -73,9 +81,11 @@ public class AvatarController {
   @GetMapping(value = "/identicon", produces = MediaType.IMAGE_PNG_VALUE)
   public BufferedImage getIdenticonAvatar(@RequestParam(name = "id", required = false) String id,
       @RequestParam(name = "w", required = false) Integer w,
-      @RequestParam(name = "h", required = false) Integer h) {
+      @RequestParam(name = "h", required = false) Integer h,
+      @RequestParam(name = "width", required = false) Integer width,
+      @RequestParam(name = "height", required = false) Integer height) {
 
-    return getAvatar(IdenticonAvatar.newAvatarBuilder().build(), id, w, h);
+    return getAvatar(IdenticonAvatar.newAvatarBuilder(), id, w, h, width, height);
   }
 
 
@@ -84,35 +94,43 @@ public class AvatarController {
   public BufferedImage getSmileyAccessoriesAvatar(
       @RequestParam(name = "id", required = false) String id,
       @RequestParam(name = "w", required = false) Integer w,
-      @RequestParam(name = "h", required = false) Integer h) {
+      @RequestParam(name = "h", required = false) Integer h,
+      @RequestParam(name = "width", required = false) Integer width,
+      @RequestParam(name = "height", required = false) Integer height) {
 
-    return getAvatar(SmileyAvatar.newAccessoriesAvatarBuilder().build(), id, w, h);
+    return getAvatar(SmileyAvatar.newAccessoriesAvatarBuilder(), id, w, h, width, height);
   }
 
   @GetMapping(value = "/smiley/eyemouth", produces = MediaType.IMAGE_PNG_VALUE)
   public BufferedImage getSmileyEyeMouthAvatar(
       @RequestParam(name = "id", required = false) String id,
       @RequestParam(name = "w", required = false) Integer w,
-      @RequestParam(name = "h", required = false) Integer h) {
+      @RequestParam(name = "h", required = false) Integer h,
+      @RequestParam(name = "width", required = false) Integer width,
+      @RequestParam(name = "height", required = false) Integer height) {
 
-    return getAvatar(SmileyAvatar.newEyeMouthAvatarBuilder().build(), id, w, h);
+    return getAvatar(SmileyAvatar.newEyeMouthAvatarBuilder(), id, w, h, width, height);
   }
 
   @GetMapping(value = "/smiley/ghost", produces = MediaType.IMAGE_PNG_VALUE)
   public BufferedImage getSmileyGhostAvatar(@RequestParam(name = "id", required = false) String id,
       @RequestParam(name = "w", required = false) Integer w,
-      @RequestParam(name = "h", required = false) Integer h) {
+      @RequestParam(name = "h", required = false) Integer h,
+      @RequestParam(name = "width", required = false) Integer width,
+      @RequestParam(name = "height", required = false) Integer height) {
 
-    return getAvatar(SmileyAvatar.newGhostAvatarBuilder().build(), id, w, h);
+    return getAvatar(SmileyAvatar.newGhostAvatarBuilder(), id, w, h, width, height);
   }
 
   @GetMapping(value = "/smiley/default", produces = MediaType.IMAGE_PNG_VALUE)
   public BufferedImage getSmileyDefaultAvatar(
       @RequestParam(name = "id", required = false) String id,
       @RequestParam(name = "w", required = false) Integer w,
-      @RequestParam(name = "h", required = false) Integer h) {
+      @RequestParam(name = "h", required = false) Integer h,
+      @RequestParam(name = "width", required = false) Integer width,
+      @RequestParam(name = "height", required = false) Integer height) {
 
-    return getAvatar(SmileyAvatar.newDefaultAvatarBuilder().build(), id, w, h);
+    return getAvatar(SmileyAvatar.newDefaultAvatarBuilder(), id, w, h, width, height);
   }
 
 
@@ -120,24 +138,33 @@ public class AvatarController {
   @GetMapping(value = "/square", produces = MediaType.IMAGE_PNG_VALUE)
   public BufferedImage getSquareAvatar(@RequestParam(name = "id", required = false) String id,
       @RequestParam(name = "w", required = false) Integer w,
-      @RequestParam(name = "h", required = false) Integer h) {
+      @RequestParam(name = "h", required = false) Integer h,
+      @RequestParam(name = "width", required = false) Integer width,
+      @RequestParam(name = "height", required = false) Integer height) {
 
-    return getAvatar(SquareAvatar.newAvatarBuilder().build(), id, w, h);
+    return getAvatar(SquareAvatar.newAvatarBuilder(), id, w, h, width, height);
   }
 
 
   @GetMapping(value = "/triangle", produces = MediaType.IMAGE_PNG_VALUE)
   public BufferedImage getTriangleAvatar(@RequestParam(name = "id", required = false) String id,
       @RequestParam(name = "w", required = false) Integer w,
-      @RequestParam(name = "h", required = false) Integer h) {
+      @RequestParam(name = "h", required = false) Integer h,
+      @RequestParam(name = "width", required = false) Integer width,
+      @RequestParam(name = "height", required = false) Integer height) {
 
-    return getAvatar(TriangleAvatar.newAvatarBuilder().build(), id, w, h);
+    return getAvatar(TriangleAvatar.newAvatarBuilder(), id, w, h, width, height);
   }
 
 
 
-  private BufferedImage getAvatar(Avatar avatar, String id, Integer w, Integer h) {
+  private BufferedImage getAvatar(AvatarBuilder avatarBuilder, String id, Integer w, Integer h,
+      Integer width, Integer height) {
     try {
+
+      if (id == null) {
+        id = "";
+      }
 
       if (w == null || w < 1) {
         w = 1;
@@ -147,9 +174,15 @@ public class AvatarController {
         h = 1;
       }
 
-      if (id == null) {
-        id = "";
+      if (width == null || width < 1) {
+        width = 128;
       }
+
+      if (height == null || height < 1) {
+        height = 128;
+      }
+
+
 
       String s = id;
       long code = UUID.nameUUIDFromBytes(s.getBytes()).getMostSignificantBits();
@@ -161,7 +194,8 @@ public class AvatarController {
       System.out.println("h=[" + h + "]");
 
 
-      BufferedImage bufferedImage = AvatarShowing.getAvatar(avatar, code, w, h);
+      BufferedImage bufferedImage =
+          AvatarShowing.getAvatar(avatarBuilder.size(width, height).build(), code, w, h);
 
 
 

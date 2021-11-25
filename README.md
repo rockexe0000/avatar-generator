@@ -255,11 +255,20 @@ avatar.create(123456L);
 
 ```run
 
+// 建立映像檔
 docker build --rm -t avatar-rest-api .
 
-docker container run -d -p 8080:8080 avatar-rest-api
+// 映像檔建立 refernece
+docker tag avatar-rest-api rockexe0000/avatar-rest-api
 
-http://localhost:8080/avatar/cat?id=aaa
+// 映像檔推送到 docker hub
+docker image push rockexe0000/avatar-rest-api
+
+// 啟動容器
+docker container run -d -p 8080:8080 rockexe0000/avatar-rest-api
+
+
+http://localhost:8080/avatar/cat?id=aaa&width=128&height=128
 http://localhost:8080/avatar/eightbit/male?id=aaa
 http://localhost:8080/avatar/eightbit/female?id=aaa
 http://localhost:8080/avatar/github?id=aaa
