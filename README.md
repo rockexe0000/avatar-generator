@@ -283,5 +283,71 @@ http://localhost:8080/avatar/triangle?id=aaa
 
 ```
 
+```
+
+mkdir k8s && cd k8s
+
+// 建立 deployment 的 yaml
+kubectl create deployment avatar-rest-api-demo --image=rockexe0000/avatar-rest-api --dry-run -o yaml > avatar-rest-api-demo.yaml
+
+// 新增資源
+kubectl apply -f avatar-rest-api-demo.yaml
+
+kubectl get pods
+
+kubectl get pods -o wide
+
+// 服務縮放成3個
+kubectl scale deployment avatar-rest-api-demo --replicas=3
+
+// 服務對外
+kubectl expose deployment avatar-rest-api-demo --port=8111 --target-port=8080 --type=NodePort
+
+// 查 services 的 port
+kubectl get svc
+
+// test
+curl http://localhost:30895/avatar/cat?id=aaa&width=128&height=128
+
+kubectl get pod
+
+// delete deployment
+kubectl delete deployment avatar-rest-api-demo
+
+// delete service
+kubectl delete service avatar-rest-api-demo
+
+// delete pod
+kubectl delete pod avatar-rest-api-demo-7c456674f5-q825w
 
 
+
+```
+
+vim avatar-rest-api-demo.yaml
+```
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: avatar-rest-api-demo
+  name: avatar-rest-api-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: avatar-rest-api-demo
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: avatar-rest-api-demo
+    spec:
+      containers:
+      - image: rockexe0000/avatar-rest-api
+        name: avatar-rest-api
+        resources: {}
+status: {}
+```
